@@ -13,7 +13,7 @@
         }
 
         body {
-            background-color: #fff0f3; /* Super soft pastel blush background */
+            background-color: #fff0f3; /* Soft baby pink background */
             color: #4a4a4a;
             display: flex;
             justify-content: center;
@@ -23,15 +23,12 @@
             position: relative;
         }
 
-        /* --- BACKGROUND MUSIC ELEMENT (HIDDEN) --- */
-        #bg-music {
-            display: none;
-        }
+        #bg-music { display: none; }
 
         /* --- FLOATING HEARTS EFFECT --- */
         .heart {
             position: fixed;
-            color: #ffcad4; /* Baby pink floating hearts */
+            color: #ffcad4;
             font-size: 1.5rem;
             animation: floatUp 6s linear infinite;
             z-index: 999;
@@ -48,24 +45,22 @@
         .screen {
             display: none;
             width: 100%;
-            max-width: 600px;
+            max-width: 650px;
             padding: 30px 20px;
             text-align: center;
             animation: fadeIn 0.8s ease forwards;
         }
 
-        .screen.active {
-            display: block;
-        }
+        .screen.active { display: block; }
 
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(15px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* UNIVERSAL PINK BUTTON STYLE */
+        /* BUTTON STYLES */
         .btn {
-            background-color: #ff8fa3; /* Vibrant warm pink */
+            background-color: #ff8fa3;
             color: white;
             border: none;
             padding: 14px 30px;
@@ -77,13 +72,24 @@
             box-shadow: 0 5px 15px rgba(255, 143, 163, 0.2);
             width: 100%;
             margin-top: 15px;
-            font-family: inherit;
         }
 
         .btn:hover {
             background-color: #f76a8c;
             transform: translateY(-2px);
         }
+
+        .btn-reveal {
+            background-color: #fcebeb;
+            border: 2px solid #ffcad4;
+            color: #f76a8c;
+            width: auto;
+            display: inline-block;
+            margin-top: 5px;
+            margin-bottom: 10px;
+        }
+        
+        .btn-reveal:hover { background-color: #ffcad4; }
 
         /* --- SCREEN 1: PASSWORD --- */
         .lock-box {
@@ -94,7 +100,7 @@
             display: inline-block;
             width: 100%;
             max-width: 420px;
-            border: 2px solid #ffcad4; /* Blush pink border */
+            border: 2px solid #ffcad4;
         }
 
         .password-photo-frame {
@@ -108,21 +114,10 @@
             align-items: center;
             border: 3px dashed #ffcad4;
             overflow: hidden;
-            color: #f76a8c;
         }
 
-        /* THIS STYLES YOUR REAL IMAGE IF YOU ADD ONE */
-        .password-photo-frame img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .lock-box h2 { 
-            color: #f76a8c; /* Deeper pink title */
-            margin-bottom: 20px;
-            font-size: 1.6rem;
-        }
+        .password-photo-frame img { width: 100%; height: 100%; object-fit: cover; }
+        .lock-box h2 { color: #f76a8c; margin-bottom: 20px; }
 
         #password-input {
             width: 100%;
@@ -133,25 +128,11 @@
             font-size: 1.3rem;
             letter-spacing: 6px;
             outline: none;
-            transition: border-color 0.3s;
-            background: white;
         }
 
-        #password-input:focus { border-color: #ff8fa3; }
+        #error-msg { color: #de7a7a; font-size: 0.9rem; margin-top: 10px; visibility: hidden; }
 
-        #error-msg {
-            color: #de7a7a;
-            font-size: 0.9rem;
-            margin-top: 10px;
-            font-weight: 500;
-            visibility: hidden;
-        }
-
-        /* Shake Animation for incorrect password */
-        .shake {
-            animation: shakeAnim 0.4s ease;
-        }
-
+        .shake { animation: shakeAnim 0.4s ease; }
         @keyframes shakeAnim {
             0%, 100% { transform: translateX(0); }
             20%, 60% { transform: translateX(-10px); }
@@ -159,66 +140,38 @@
         }
 
         /* --- SCREEN 2: REVEAL PAGE --- */
-        .reveal-title {
-            font-size: 3.5rem;
-            color: #de7a7a;
-            margin-bottom: 20px;
-            animation: heartbeat 1.5s infinite;
-        }
+        .reveal-title { font-size: 3.5rem; color: #de7a7a; margin-bottom: 20px; animation: heartbeat 1.5s infinite; }
+        @keyframes heartbeat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.03); } }
 
-        @keyframes heartbeat {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.03); }
-        }
-
-        /* --- SCREEN 3: MAIN STORY PAGE --- */
-        .story-container {
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .story-header h1 {
-            color: #de7a7a;
-            font-size: 2.8rem;
-            margin-bottom: 10px;
-        }
-
-        .story-header p {
-            color: #777;
-            margin-bottom: 40px;
-        }
-
-        /* Cute White Section Cards */
+        /* --- SCREEN 3: STORIES AND MEMORIES --- */
         .card {
             background: white;
             border-radius: 20px;
-            padding: 30px;
-            margin-bottom: 30px;
+            padding: 25px;
+            margin-bottom: 25px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.02);
             text-align: left;
-            border-top: 5px solid #ffcad4; /* Cute baby pink bar at top */
+            border-top: 5px solid #ffcad4;
         }
 
-        .card h3 {
-            color: #f76a8c;
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+        .card h3 { color: #f76a8c; font-size: 1.4rem; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+        
+        /* Hidden trays for content */
+        .hidden-content {
+            display: none;
+            opacity: 0;
+            transition: all 0.5s ease;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed #ffcad4;
         }
 
-        .card p {
-            color: #666;
-            line-height: 1.7;
-            font-size: 1.05rem;
-            white-space: pre-line; /* Essential for new lines! */
-        }
+        .hidden-content.open { display: block; opacity: 1; }
+        .hidden-content p { color: #666; line-height: 1.7; font-size: 1.05rem; white-space: pre-line; }
 
-        /* Photo/Timeline Placeholder - for simple display, NOT the gallery */
         .story-photo {
             width: 100%;
-            height: 250px;
+            height: 230px;
             background-color: #fcebeb;
             border: 2px dashed #ffcad4;
             border-radius: 15px;
@@ -227,95 +180,71 @@
             justify-content: center;
             align-items: center;
             color: #ff8fa3;
-            font-size: 0.9rem;
             overflow: hidden;
         }
-        
-        .story-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+        .story-photo img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* --- SECRET 'FAVE MOMENTS' GALLERY --- */
-        #gallery-toggle {
-            display: none; /* Hidden by default until JavaScript is clicked */
-            opacity: 0;
-            transition: opacity 0.5s ease;
-            max-height: 0;
-            overflow: hidden;
-        }
-
-        #gallery-toggle.open {
-            display: block;
-            opacity: 1;
-            max-height: 2000px; /* Big value so it animates open */
-        }
-
-        .btn-reveal {
-            background-color: #fcebeb;
-            border: 2px solid #ffcad4;
-            color: #f76a8c;
-            width: auto;
-            display: inline-block;
-            margin-top: 0;
-            margin-bottom: 15px;
-        }
-        
-        .btn-reveal:hover {
-            background-color: #ffcad4;
-        }
-
+        /* POLAROID GRID (10 PICS) */
         .moment-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 20px;
-            margin-top: 25px;
+            margin-top: 15px;
         }
 
         .polaroid {
             background: white;
-            padding: 15px 15px 30px 15px; /* Leaves bigger space at bottom for text */
-            box-shadow: 0 10px 20px rgba(0,0,0,0.03);
-            transform: rotate(-2deg);
+            padding: 12px 12px 25px 12px;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.04);
+            border: 1px solid #fff0f3;
             transition: transform 0.3s;
         }
-        
-        /* Make some photos tilt the other way for random look */
-        .moment-grid .polaroid:nth-child(even) {
-            transform: rotate(2deg);
-        }
-
-        .polaroid:hover {
-            transform: rotate(0deg) translateY(-5px);
-            z-index: 50;
-        }
+        .moment-grid .polaroid:nth-child(even) { transform: rotate(2deg); }
+        .moment-grid .polaroid:nth-child(odd) { transform: rotate(-2deg); }
+        .polaroid:hover { transform: rotate(0deg) translateY(-5px); z-index: 10; }
 
         .polaroid-image {
             width: 100%;
-            height: 180px;
+            height: 150px;
             background: #fcebeb;
-            border: 1px solid #ffcad4;
             display: flex;
             justify-content: center;
             align-items: center;
             overflow: hidden;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
-        
-        .polaroid-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+        .polaroid-image img { width: 100%; height: 100%; object-fit: cover; }
+        .polaroid p { color: #777; font-size: 0.85rem; text-align: center; white-space: normal; }
 
-        .moment-grid p {
-            color: #777;
-            font-size: 0.9rem;
-            text-align: center;
-            line-height: 1.4;
-            white-space: normal; /* Normal word wrap in the captions */
+        /* --- SCREEN 4: INTERACTIVE QUIZ --- */
+        .quiz-box { background: white; padding: 35px 25px; border-radius: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.02); text-align: left; border: 2px solid #ffcad4; }
+        .quiz-box h2 { color: #f76a8c; margin-bottom: 10px; text-align: center; }
+        .question-container { margin-top: 20px; display: none; }
+        .question-container.active { display: block; }
+        .question-text { font-size: 1.2rem; color: #4a4a4a; font-weight: bold; margin-bottom: 15px; }
+        
+        .options-list { list-style: none; }
+        .option-btn {
+            background: #fff0f3;
+            border: 2px solid #ffcad4;
+            padding: 12px 20px;
+            border-radius: 15px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            width: 100%;
+            text-align: left;
+            font-size: 1rem;
+            transition: all 0.2s;
+            color: #555;
         }
+        .option-btn:hover { background: #ffcad4; color: #fff; }
+        
+        #quiz-result-box { display: none; text-align: center; margin-top: 20px; }
+
+        /* --- SCREEN 5: FINAL LOVE NOTE --- */
+        .final-box { background: white; padding: 40px 30px; border-radius: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.02); border: 2px solid #ffcad4; text-align: center; }
+        .final-box h2 { color: #f76a8c; font-size: 2.2rem; margin-bottom: 15px; }
+        .final-box p { color: #555; line-height: 1.8; font-size: 1.1rem; white-space: pre-line; }
     </style>
 </head>
 <body>
@@ -327,17 +256,14 @@
     <div id="screen-1" class="screen active">
         <div class="lock-box" id="lock-box">
             <div class="password-photo-frame">
-                <img src="https://via.placeholder.com/600x400.png?text=Put+Our+Photo+Here!+%" alt="Us">
-                </div>
-            
+                <img src="photo-lock.jpg" alt="Us Placeholder">
+            </div>
             <h2>Confidential 🔐</h2>
-            
             <div class="password-input-container">
                 <input type="password" id="password-input" placeholder="••••" maxlength="4">
             </div>
-            
             <button class="btn" onclick="checkPassword()">Enter</button>
-            <div id="error-msg">Wrong date! Hint: When did this all start? 😉</div>
+            <div id="error-msg">Wrong date! Try again baby... 😉</div>
         </div>
     </div>
 
@@ -347,139 +273,206 @@
         <button class="btn" style="max-width: 300px;" onclick="enterStory()">Enter Our Story</button>
     </div>
 
-    <div id="screen-3" class="screen story-container">
-        <header class="story-header">
-            <h1>Happy Anniversary! ❤️</h1>
-            <p>I love you more than words can say.</p>
+    <div id="screen-3" class="screen">
+        <header style="margin-bottom: 30px;">
+            <h1 style="color: #de7a7a; font-size: 2.5rem;">Our Anniversary Space ❤️</h1>
+            <p style="color: #777;">Click each section to open up my letters to you...</p>
         </header>
 
         <div class="card">
-            <h3>🌱 How we started</h3>
-            <p>You can write your full story here! Describe your first dates, your first conversation, what made you fall for him... This section shows everything the second he enters the page.
-            
-            It crazy thinking back compared to where we are now...</p>
-            
-            <div class="story-photo">
-                <span>[ Optional: Photo from when you started! ]</span>
-            </div>
-        </div>
-
-        <div class="card gallery-section">
-            <h3 style="margin-bottom: 5px;">📸 Fave Moments</h3>
-            <p style="margin-bottom: 20px; font-size: 0.9rem; color: #888;">It's our secret scrapbook...</p>
-            
-            <button class="btn btn-reveal" id="reveal-btn" onclick="toggleGallery()">Click to reveal →</button>
-            
-            <div id="gallery-toggle">
-                <p>These are some moments I'll never forget.</p>
-                
-                <div class="moment-grid">
-                    <div class="polaroid">
-                        <div class="polaroid-image">
-                            <span>[ photo 1 ]</span>
-                        </div>
-                        <p>Write your memory caption here!</p>
-                    </div>
-                    <div class="polaroid">
-                        <div class="polaroid-image">
-                            <span>[ photo 2 ]</span>
-                        </div>
-                        <p>Another cute description here.</p>
-                    </div>
-                    <div class="polaroid">
-                        <div class="polaroid-image">
-                            <span>[ photo 3 ]</span>
-                        </div>
-                        <p>You can duplicate these blocks to add more!</p>
-                    </div>
+            <h3>🌱 How We Started</h3>
+            <button class="btn btn-reveal" id="btn-start" onclick="toggleSection('content-start', 'btn-start')">Click to read →</button>
+            <div id="content-start" class="hidden-content">
+                <p>Type out your full history here! Inside these quotes, tell him how you fell for him and what those early days felt like.</p>
+                <div class="story-photo">
+                    <img src="photo-start.jpg" alt="Start Picture">
                 </div>
             </div>
         </div>
 
         <div class="card">
-            <h3>💌 Why I love you</h3>
-            <p>Write your massive love letter here. I love you because you're uniquely you, my safe space, and my absolute favorite person to do life with. 
+            <h3>📸 Fave Moments Together</h3>
+            <button class="btn btn-reveal" id="btn-fave" onclick="toggleSection('content-fave', 'btn-fave')">Click to reveal scrapbook →</button>
+            <div id="content-fave" class="hidden-content">
+                <div class="moment-grid">
+                    <div class="polaroid"><div class="polaroid-image"><img src="p1.jpg" alt="Pic 1"></div><p>Caption for moment 1 ❤️</p></div>
+                    <div class="polaroid"><div class="polaroid-image"><img src="p2.jpg" alt="Pic 2"></div><p>Caption for moment 2</p></div>
+                    <div class="polaroid"><div class="polaroid-image"><img src="p3.jpg" alt="Pic 3"></div><p>Caption for moment 3</p></div>
+                    <div class="polaroid"><div class="polaroid-image"><img src="p4.jpg" alt="Pic 4"></div><p>Caption for moment 4</p></div>
+                    <div class="polaroid"><div class="polaroid-image"><img src="p5.jpg" alt="Pic 5"></div><p>Caption for moment 5</p></div>
+                    <div class="polaroid"><div class="polaroid-image"><img src="p6.jpg" alt="Pic 6"></div><p>Caption for moment 6</p></div>
+                    <div class="polaroid"><div class="polaroid-image"><img src="p7.jpg" alt="Pic 7"></div><p>Caption for moment 7</p></div>
+                    <div class="polaroid"><div class="polaroid-image"><img src="p8.jpg" alt="Pic 8"></div><p>Caption for moment 8</p></div>
+                    <div class="polaroid"><div class="polaroid-image"><img src="p9.jpg" alt="Pic 9"></div><p>Caption for moment 9</p></div>
+                    <div class="polaroid"><div class="polaroid-image"><img src="p10.jpg" alt="Pic 10"></div><p>Caption for moment 10 ❤️</p></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>💌 Why I Love You</h3>
+            <button class="btn btn-reveal" id="btn-love" onclick="toggleSection('content-love', 'btn-love')">Click to read →</button>
+            <div id="content-love" class="hidden-content">
+                <p>Write your beautiful heartfelt love letter right here! Thank him for being your partner, your safe place, and your favorite person ever.</p>
+            </div>
+        </div>
+
+        <button class="btn" style="margin-top: 20px; background-color: #f76a8c;" onclick="goToQuiz()">Take Our Quiz! 🧠➡️</button>
+    </div>
+
+    <div id="screen-4" class="screen">
+        <div class="quiz-box">
+            <h2>The "How Well Do You Know Us?" Quiz 💗</h2>
+            <p style="text-align: center; color: #888; font-size: 0.9rem; margin-bottom: 20px;">Let's see if you remember everything babe!</p>
             
-            Thank you for being my teammate. ❤️</p>
+            <div id="q1" class="question-container active">
+                <p class="question-text">1. Where was our very first official date?</p>
+                <div class="options-list">
+                    <button class="option-btn" onclick="answerQuiz(1, true)">[Change to Right Answer Option]</button>
+                    <button class="option-btn" onclick="answerQuiz(1, false)">[Change to Wrong Option A]</button>
+                    <button class="option-btn" onclick="answerQuiz(1, false)">[Change to Wrong Option B]</button>
+                </div>
+            </div>
+
+            <div id="q2" class="question-container">
+                <p class="question-text">2. What is my absolute favorite food or snack that you always get me?</p>
+                <div class="options-list">
+                    <button class="option-btn" onclick="answerQuiz(2, false)">[Wrong Answer]</button>
+                    <button class="option-btn" onclick="answerQuiz(2, true)">[Right Answer]</button>
+                    <button class="option-btn" onclick="answerQuiz(2, false)">[Wrong Answer]</button>
+                </div>
+            </div>
+
+            <div id="q3" class="question-container">
+                <p class="question-text">3. Who said "I love you" first?</p>
+                <div class="options-list">
+                    <button class="option-btn" onclick="answerQuiz(3, true)">Me obviously!</button>
+                    <button class="option-btn" onclick="answerQuiz(3, false)">You did!</button>
+                </div>
+            </div>
+
+            <div id="q4" class="question-container">
+                <p class="question-text">4. What is our absolute favorite hobby or thing to do together?</p>
+                <div class="options-list">
+                    <button class="option-btn" onclick="answerQuiz(4, false)">[Wrong Answer]</button>
+                    <button class="option-btn" onclick="answerQuiz(4, false)">[Wrong Answer]</button>
+                    <button class="option-btn" onclick="answerQuiz(4, true)">[Right Answer]</button>
+                </div>
+            </div>
+
+            <div id="q5" class="question-container">
+                <p class="question-text">5. How many days/months have we officially been together today?</p>
+                <div class="options-list">
+                    <button class="option-btn" onclick="answerQuiz(5, false)">[Wrong Option]</button>
+                    <button class="option-btn" onclick="answerQuiz(5, true)">[Right Option]</button>
+                    <button class="option-btn" onclick="answerQuiz(5, false)">[Wrong Option]</button>
+                </div>
+            </div>
+
+            <div id="quiz-result-box">
+                <h3 style="color: #ff8fa3; margin-bottom: 15px; font-size: 1.4rem;">Quiz Complete! 🎉</h3>
+                <p style="color: #555; margin-bottom: 20px;">You did amazing babe! Ready for your final note?</p>
+                <button class="btn" onclick="goToFinal()">Next ➡️</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="screen-5" class="screen">
+        <div class="final-box">
+            <h2>To More Memories ✨</h2>
+            <p>Happy Anniversary again, my love! 
+
+            Thank you for playing along and checking out my little website surprise. I hope it made you smile as much as you make me smile every day. 
+
+            I love you endlessly, Arriv! Always and forever. 💗</p>
         </div>
     </div>
 
     <script>
-        // --- 1. PASSWORD & ANIMATIONS ---
+        // --- PASSWORD SYSTEM ---
         function checkPassword() {
             const input = document.getElementById('password-input').value;
             const lockBox = document.getElementById('lock-box');
             const errorMsg = document.getElementById('error-msg');
 
             if (input === '0524') {
-                // Advance to Reveal Screen
                 document.getElementById('screen-1').classList.remove('active');
                 document.getElementById('screen-2').classList.add('active');
-                
-                // Start creating gentle floating hearts immediately
                 setInterval(createHeart, 400);
             } else {
-                // Trigger Shaking Effect and Show "Try Again"
                 lockBox.classList.add('shake');
                 errorMsg.style.visibility = 'visible';
                 document.getElementById('password-input').value = '';
-
-                // Remove shake class after animation completes so it can shake again
-                setTimeout(() => {
-                    lockBox.classList.remove('shake');
-                }, 400);
+                setTimeout(() => { lockBox.classList.remove('shake'); }, 400);
             }
         }
 
-        // Allow pressing "Enter" on keyboard
         document.getElementById('password-input').addEventListener('keypress', function(e) {
             if (e.key === 'Enter') { checkPassword(); }
         });
 
-        // --- 2. TRANSITION TO STORY & MUSIC ---
         function enterStory() {
             document.getElementById('screen-2').classList.remove('active');
             document.getElementById('screen-3').classList.add('active');
-
-            // Play background music
-            const music = document.getElementById('bg-music');
-            music.play().catch(error => {
-                console.log("Audio play blocked by browser. This is normal.", error);
-            });
+            document.getElementById('bg-music').play().catch(e => console.log("Audio waiting..."));
         }
 
-        // --- 3. JavaScript Floating Hearts ---
+        // --- ACCORDION TOGGLE (OPEN/CLOSE CARDS) ---
+        function toggleSection(contentId, btnId) {
+            const content = document.getElementById(contentId);
+            const button = document.getElementById(btnId);
+            content.classList.toggle('open');
+            
+            if(content.classList.contains('open')) {
+                button.innerText = 'Close section ↑';
+            } else {
+                button.innerText = 'Click to read →';
+            }
+        }
+
+        // --- NAVIGATION ---
+        function goToQuiz() {
+            document.getElementById('screen-3').classList.remove('active');
+            document.getElementById('screen-4').classList.add('active');
+        }
+
+        function goToFinal() {
+            document.getElementById('screen-4').classList.remove('active');
+            document.getElementById('screen-5').classList.add('active');
+        }
+
+        // --- INTERACTIVE QUIZ LOGIC ---
+        let currentQuestion = 1;
+        function answerQuiz(questionNum, isCorrect) {
+            if (isCorrect) {
+                alert("Correct! Look at you remembering stuff 🥰");
+            } else {
+                alert("Wrong answer dummy!! Guess again 😂 Close this prompt and click another answer!");
+                return; // Stops them from advancing until they get it right!
+            }
+
+            // Move to next question
+            document.getElementById(`q${questionNum}`).classList.remove('active');
+            currentQuestion++;
+
+            if (currentQuestion <= 5) {
+                document.getElementById(`q${currentQuestion}`).classList.add('active');
+            } else {
+                document.getElementById('quiz-result-box').style.display = 'block';
+            }
+        }
+
+        // --- FLOATING HEARTS GENERATOR ---
         function createHeart() {
             const heart = document.createElement('div');
             heart.classList.add('heart');
-            heart.innerHTML = '💗'; // Baby pink heart emoji
-            
+            heart.innerHTML = '💗';
             heart.style.left = Math.random() * 100 + 'vw';
             heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
             heart.style.fontSize = (Math.random() * 1 + 1) + 'rem';
-            
             document.body.appendChild(heart);
-
-            setTimeout(() => {
-                heart.remove();
-            }, 6000);
+            setTimeout(() => { heart.remove(); }, 6000);
         }
-        
-        // --- 4. GALLERY INTERACTION ---
-        function toggleGallery() {
-            const gallery = document.getElementById('gallery-toggle');
-            const button = document.getElementById('reveal-btn');
-            
-            // Toggle the open class for animation
-            gallery.classList.toggle('open');
-            
-            // Change button text to indicate state
-            if (gallery.classList.contains('open')) {
-                button.innerText = 'Close scrapbook ↑';
-            } else {
-                button.innerText = 'Click to reveal →';
-            }
-        }
-    </script>
+    </style>
 </body>
 </html>
