@@ -9,11 +9,11 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
         body {
-            background-color: #fff0f3; /* Soft baby pink background */
+            background-color: #fff0f3; /* Baby Pink Background */
             color: #4a4a4a;
             display: flex;
             justify-content: center;
@@ -23,9 +23,11 @@
             position: relative;
         }
 
-        #bg-music { display: none; }
+        #bg-music {
+            display: none;
+        }
 
-        /* --- FLOATING HEARTS EFFECT --- */
+        /* FLOATING HEARTS ANIMATION */
         .heart {
             position: fixed;
             color: #ffcad4;
@@ -41,35 +43,37 @@
             100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
         }
 
-        /* --- SCREEN VISIBILITY TOGGLES --- */
+        /* SCREEN MANAGEMENT */
         .screen {
             display: none;
             width: 100%;
-            max-width: 650px;
-            padding: 30px 20px;
+            max-width: 600px;
+            padding: 25px 15px;
             text-align: center;
-            animation: fadeIn 0.8s ease forwards;
         }
 
-        .screen.active { display: block; }
+        .screen.active {
+            display: block;
+            animation: fadeIn 0.5s ease forwards;
+        }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
+            from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* BUTTON STYLES */
+        /* BUTTONS */
         .btn {
             background-color: #ff8fa3;
             color: white;
             border: none;
-            padding: 14px 30px;
+            padding: 14px 28px;
             border-radius: 25px;
             font-size: 1rem;
             cursor: pointer;
             font-weight: bold;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(255, 143, 163, 0.2);
+            transition: all 0.2s ease;
+            box-shadow: 0 5px 15px rgba(255, 143, 163, 0.3);
             width: 100%;
             margin-top: 15px;
         }
@@ -83,296 +87,338 @@
             background-color: #fcebeb;
             border: 2px solid #ffcad4;
             color: #f76a8c;
-            width: auto;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            cursor: pointer;
             display: inline-block;
-            margin-top: 5px;
-            margin-bottom: 10px;
+            margin-top: 10px;
+            width: auto;
         }
-        
-        .btn-reveal:hover { background-color: #ffcad4; }
 
-        /* --- SCREEN 1: PASSWORD --- */
+        .btn-reveal:hover {
+            background-color: #ffcad4;
+        }
+
+        /* SCREEN 1: PASSWORD BOX */
         .lock-box {
             background: white;
-            padding: 30px;
+            padding: 35px 25px;
             border-radius: 25px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-            display: inline-block;
             width: 100%;
-            max-width: 420px;
+            max-width: 400px;
             border: 2px solid #ffcad4;
+            margin: 0 auto;
         }
 
         .password-photo-frame {
             width: 100%;
-            height: 200px;
+            height: 180px;
             background-color: #fcebeb;
-            border-radius: 18px;
-            margin-bottom: 25px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            border: 3px dashed #ffcad4;
             display: flex;
             justify-content: center;
             align-items: center;
-            border: 3px dashed #ffcad4;
             overflow: hidden;
         }
 
-        .password-photo-frame img { width: 100%; height: 100%; object-fit: cover; }
-        .lock-box h2 { color: #f76a8c; margin-bottom: 20px; }
+        .password-photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .lock-box h2 {
+            color: #f76a8c;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
 
         #password-input {
             width: 100%;
-            padding: 16px;
+            padding: 15px;
             border: 2px solid #ffcad4;
             border-radius: 15px;
             text-align: center;
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             letter-spacing: 6px;
             outline: none;
+            background: #fff;
         }
 
-        #error-msg { color: #de7a7a; font-size: 0.9rem; margin-top: 10px; visibility: hidden; }
+        #password-input:focus {
+            border-color: #ff8fa3;
+        }
+
+        #error-msg {
+            color: #de7a7a;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            font-weight: bold;
+            display: none;
+        }
 
         .shake { animation: shakeAnim 0.4s ease; }
         @keyframes shakeAnim {
             0%, 100% { transform: translateX(0); }
-            20%, 60% { transform: translateX(-10px); }
-            40%, 80% { transform: translateX(10px); }
+            20%, 60% { transform: translateX(-8px); }
+            40%, 80% { transform: translateX(8px); }
         }
 
-        /* --- SCREEN 2: REVEAL PAGE --- */
-        .reveal-title { font-size: 3.5rem; color: #de7a7a; margin-bottom: 20px; animation: heartbeat 1.5s infinite; }
-        @keyframes heartbeat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.03); } }
+        /* SCREEN 2: REVEAL PAGE */
+        .reveal-title {
+            font-size: 3.5rem;
+            color: #f76a8c;
+            margin-bottom: 15px;
+            animation: heartbeat 1.5s infinite;
+        }
 
-        /* --- SCREEN 3: STORIES AND MEMORIES --- */
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.04); }
+        }
+
+        /* SCREEN 3: CARDS AND TRUCKLOAD OF POLAROIDS */
         .card {
             background: white;
             border-radius: 20px;
             padding: 25px;
             margin-bottom: 25px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.02);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.02);
             text-align: left;
             border-top: 5px solid #ffcad4;
         }
 
-        .card h3 { color: #f76a8c; font-size: 1.4rem; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
-        
-        /* Hidden trays for content */
+        .card h3 {
+            color: #f76a8c;
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+        }
+
         .hidden-content {
             display: none;
-            opacity: 0;
-            transition: all 0.5s ease;
             margin-top: 15px;
             padding-top: 15px;
             border-top: 1px dashed #ffcad4;
         }
 
-        .hidden-content.open { display: block; opacity: 1; }
-        .hidden-content p { color: #666; line-height: 1.7; font-size: 1.05rem; white-space: pre-line; }
+        .hidden-content.open {
+            display: block;
+        }
+
+        .hidden-content p {
+            color: #555;
+            line-height: 1.6;
+            font-size: 1rem;
+            white-space: pre-line;
+        }
 
         .story-photo {
             width: 100%;
-            height: 230px;
+            height: 220px;
             background-color: #fcebeb;
             border: 2px dashed #ffcad4;
-            border-radius: 15px;
+            border-radius: 12px;
             margin-top: 15px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #ff8fa3;
             overflow: hidden;
         }
+
         .story-photo img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* POLAROID GRID (10 PICS) */
+        /* POLAROID SYSTEM */
         .moment-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 15px;
             margin-top: 15px;
         }
 
         .polaroid {
             background: white;
-            padding: 12px 12px 25px 12px;
-            box-shadow: 0 8px 15px rgba(0,0,0,0.04);
+            padding: 10px 10px 20px 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.04);
             border: 1px solid #fff0f3;
-            transition: transform 0.3s;
+            transition: transform 0.2s;
         }
-        .moment-grid .polaroid:nth-child(even) { transform: rotate(2deg); }
-        .moment-grid .polaroid:nth-child(odd) { transform: rotate(-2deg); }
+
+        .polaroid:nth-child(even) { transform: rotate(2deg); }
+        .polaroid:nth-child(odd) { transform: rotate(-2deg); }
         .polaroid:hover { transform: rotate(0deg) translateY(-5px); z-index: 10; }
 
         .polaroid-image {
             width: 100%;
-            height: 150px;
+            height: 140px;
             background: #fcebeb;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             overflow: hidden;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
-        .polaroid-image img { width: 100%; height: 100%; object-fit: cover; }
-        .polaroid p { color: #777; font-size: 0.85rem; text-align: center; white-space: normal; }
 
-        /* --- SCREEN 4: INTERACTIVE QUIZ --- */
-        .quiz-box { background: white; padding: 35px 25px; border-radius: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.02); text-align: left; border: 2px solid #ffcad4; }
-        .quiz-box h2 { color: #f76a8c; margin-bottom: 10px; text-align: center; }
-        .question-container { margin-top: 20px; display: none; }
-        .question-container.active { display: block; }
-        .question-text { font-size: 1.2rem; color: #4a4a4a; font-weight: bold; margin-bottom: 15px; }
+        .polaroid-image img { width: 100%; height: 100%; object-fit: cover; }
+        .polaroid p { color: #666; font-size: 0.8rem; text-align: center; }
+
+        /* SCREEN 4: QUIZ STYLE */
+        .quiz-box {
+            background: white;
+            padding: 30px 20px;
+            border-radius: 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.02);
+            text-align: left;
+            border: 2px solid #ffcad4;
+        }
+
+        .quiz-box h2 { color: #f76a8c; margin-bottom: 15px; text-align: center; }
         
-        .options-list { list-style: none; }
+        .question-container { display: none; }
+        .question-container.active { display: block; }
+        
+        .question-text { font-size: 1.15rem; color: #4a4a4a; font-weight: bold; margin-bottom: 15px; }
+        
         .option-btn {
             background: #fff0f3;
             border: 2px solid #ffcad4;
-            padding: 12px 20px;
-            border-radius: 15px;
+            padding: 12px 15px;
+            border-radius: 12px;
             margin-bottom: 10px;
             cursor: pointer;
             width: 100%;
             text-align: left;
-            font-size: 1rem;
-            transition: all 0.2s;
+            font-size: 0.95rem;
             color: #555;
+            transition: all 0.2s;
         }
-        .option-btn:hover { background: #ffcad4; color: #fff; }
-        
-        #quiz-result-box { display: none; text-align: center; margin-top: 20px; }
 
-        /* --- SCREEN 5: FINAL LOVE NOTE --- */
-        .final-box { background: white; padding: 40px 30px; border-radius: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.02); border: 2px solid #ffcad4; text-align: center; }
-        .final-box h2 { color: #f76a8c; font-size: 2.2rem; margin-bottom: 15px; }
-        .final-box p { color: #555; line-height: 1.8; font-size: 1.1rem; white-space: pre-line; }
+        .option-btn:hover { background: #ffcad4; color: white; }
+        #quiz-result-box { display: none; text-align: center; }
+
+        /* SCREEN 5: CLOSING */
+        .final-box {
+            background: white;
+            padding: 35px 25px;
+            border-radius: 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.02);
+            border: 2px solid #ffcad4;
+        }
+
+        .final-box h2 { color: #f76a8c; font-size: 2rem; margin-bottom: 15px; }
+        .final-box p { color: #555; line-height: 1.7; font-size: 1.05rem; white-space: pre-line; }
     </style>
 </head>
 <body>
 
-    <audio id="bg-music" loop>
+    <audio id="bg-music" loop pre-load="auto">
         <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
     </audio>
 
     <div id="screen-1" class="screen active">
         <div class="lock-box" id="lock-box">
             <div class="password-photo-frame">
-                <img src="photo-lock.jpg" alt="Us Placeholder">
+                <img src="photo-lock.jpg" alt="[ Picture Placeholder ]">
             </div>
             <h2>Confidential 🔐</h2>
-            <div class="password-input-container">
-                <input type="password" id="password-input" placeholder="••••" maxlength="4">
-            </div>
+            <input type="password" id="password-input" placeholder="••••" maxlength="4">
             <button class="btn" onclick="checkPassword()">Enter</button>
-            <div id="error-msg">Wrong date! Try again baby... 😉</div>
+            <div id="error-msg">Wrong password! Try again baby... 😉</div>
         </div>
     </div>
 
     <div id="screen-2" class="screen">
-        <h1 class="reveal-title">Hi Baby!💗</h1>
-        <p style="font-size: 1.2rem; color: #777; margin-bottom: 30px;">I made this secret digital universe just for us.</p>
-        <button class="btn" style="max-width: 300px;" onclick="enterStory()">Enter Our Story</button>
+        <h1 class="reveal-title">Hi Baby! 💗</h1>
+        <p style="font-size: 1.15rem; color: #666; margin-bottom: 25px;">I made this secret digital universe just for us.</p>
+        <button class="btn" style="max-width: 280px; margin: 0 auto;" onclick="enterStory()">Enter Our Story</button>
     </div>
 
     <div id="screen-3" class="screen">
-        <header style="margin-bottom: 30px;">
-            <h1 style="color: #de7a7a; font-size: 2.5rem;">Our Anniversary Space ❤️</h1>
-            <p style="color: #777;">Click each section to open up my letters to you...</p>
+        <header style="margin-bottom: 25px;">
+            <h1 style="color: #f76a8c; font-size: 2.3rem; margin-bottom: 5px;">Our Anniversary Space ❤️</h1>
+            <p style="color: #777; font-size: 0.95rem;">Click each section below to read my secret notes...</p>
         </header>
 
         <div class="card">
             <h3>🌱 How We Started</h3>
-            <button class="btn btn-reveal" id="btn-start" onclick="toggleSection('content-start', 'btn-start')">Click to read →</button>
+            <button class="btn-reveal" onclick="toggleSection('content-start', this)">Click to read →</button>
             <div id="content-start" class="hidden-content">
-                <p>Type out your full history here! Inside these quotes, tell him how you fell for him and what those early days felt like.</p>
+                <p>Type out the full history of how you guys met right here inside these paragraph text blocks!</p>
                 <div class="story-photo">
-                    <img src="photo-start.jpg" alt="Start Picture">
+                    <img src="photo-start.jpg" alt="[ Story Image Placeholder ]">
                 </div>
             </div>
         </div>
 
         <div class="card">
             <h3>📸 Fave Moments Together</h3>
-            <button class="btn btn-reveal" id="btn-fave" onclick="toggleSection('content-fave', 'btn-fave')">Click to reveal scrapbook →</button>
+            <button class="btn-reveal" onclick="toggleSection('content-fave', this)">Click to reveal scrapbook →</button>
             <div id="content-fave" class="hidden-content">
                 <div class="moment-grid">
-                    <div class="polaroid"><div class="polaroid-image"><img src="p1.jpg" alt="Pic 1"></div><p>Caption for moment 1 ❤️</p></div>
-                    <div class="polaroid"><div class="polaroid-image"><img src="p2.jpg" alt="Pic 2"></div><p>Caption for moment 2</p></div>
-                    <div class="polaroid"><div class="polaroid-image"><img src="p3.jpg" alt="Pic 3"></div><p>Caption for moment 3</p></div>
-                    <div class="polaroid"><div class="polaroid-image"><img src="p4.jpg" alt="Pic 4"></div><p>Caption for moment 4</p></div>
-                    <div class="polaroid"><div class="polaroid-image"><img src="p5.jpg" alt="Pic 5"></div><p>Caption for moment 5</p></div>
-                    <div class="polaroid"><div class="polaroid-image"><img src="p6.jpg" alt="Pic 6"></div><p>Caption for moment 6</p></div>
-                    <div class="polaroid"><div class="polaroid-image"><img src="p7.jpg" alt="Pic 7"></div><p>Caption for moment 7</p></div>
-                    <div class="polaroid"><div class="polaroid-image"><img src="p8.jpg" alt="Pic 8"></div><p>Caption for moment 8</p></div>
-                    <div class="polaroid"><div class="polaroid-image"><img src="p9.jpg" alt="Pic 9"></div><p>Caption for moment 9</p></div>
-                    <div class="polaroid"><div class="polaroid-image"><img src="p10.jpg" alt="Pic 10"></div><p>Caption for moment 10 ❤️</p></div>
+                    <div class="polaroid"><div class="polaroid-image"><img src="p1.jpg" alt="1"></div><p>Moment 1 Caption</p></div>
+                    <div class="polaroid"><div class="polaroid-image"><img src="p2.jpg" alt="2"></div><p>Moment 2 Caption</p></div>
+                    <div class="polaroid"><div class="polaroid-image"><img src="p3.jpg" alt="3"></div><p>Moment 3 Caption</p></div>
+                    <div class="polaroid"><div class="polaroid-image"><img src="p4.jpg" alt="4"></div><p>Moment 4 Caption</p></div>
+                    <div class="polaroid"><div class="polaroid-image"><img src="p5.jpg" alt="5"></div><p>Moment 5 Caption</p></div>
+                    <div class="polaroid"><div class="polaroid-image"><img src="p6.jpg" alt="6"></div><p>Moment 6 Caption</p></div>
+                    <div class="polaroid"><div class="polaroid-image"><img src="p7.jpg" alt="7"></div><p>Moment 7 Caption</p></div>
+                    <div class="polaroid"><div class="polaroid-image"><img src="p8.jpg" alt="8"></div><p>Moment 8 Caption</p></div>
+                    <div class="polaroid"><div class="polaroid-image"><img src="p9.jpg" alt="9"></div><p>Moment 9 Caption</p></div>
+                    <div class="polaroid"><div class="polaroid-image"><img src="p10.jpg" alt="10"></div><p>Moment 10 Caption ❤️</p></div>
                 </div>
             </div>
         </div>
 
         <div class="card">
             <h3>💌 Why I Love You</h3>
-            <button class="btn btn-reveal" id="btn-love" onclick="toggleSection('content-love', 'btn-love')">Click to read →</button>
+            <button class="btn-reveal" onclick="toggleSection('content-love', this)">Click to read →</button>
             <div id="content-love" class="hidden-content">
-                <p>Write your beautiful heartfelt love letter right here! Thank him for being your partner, your safe place, and your favorite person ever.</p>
+                <p>Write your beautiful love letter directly inside this text block here!</p>
             </div>
         </div>
 
-        <button class="btn" style="margin-top: 20px; background-color: #f76a8c;" onclick="goToQuiz()">Take Our Quiz! 🧠➡️</button>
+        <button class="btn" style="background-color: #f76a8c; margin-top: 15px;" onclick="changeScreen(3, 4)">Take Our Quiz! 🧠➡️</button>
     </div>
 
     <div id="screen-4" class="screen">
         <div class="quiz-box">
-            <h2>The "How Well Do You Know Us?" Quiz 💗</h2>
-            <p style="text-align: center; color: #888; font-size: 0.9rem; margin-bottom: 20px;">Let's see if you remember everything babe!</p>
+            <h2>Our Relationship Quiz! 💗</h2>
+            <p style="text-align: center; color: #888; font-size: 0.85rem; margin-bottom: 20px;">Let's see if you remember things babe!</p>
             
-            <div id="q1" class="question-container active">
+            <div id="quiz-q1" class="question-container active">
                 <p class="question-text">1. Where was our very first official date?</p>
-                <div class="options-list">
-                    <button class="option-btn" onclick="answerQuiz(1, true)">[Change to Right Answer Option]</button>
-                    <button class="option-btn" onclick="answerQuiz(1, false)">[Change to Wrong Option A]</button>
-                    <button class="option-btn" onclick="answerQuiz(1, false)">[Change to Wrong Option B]</button>
-                </div>
+                <button class="option-btn" onclick="handleQuizAnswer(1, true)">[Change to Right Answer]</button>
+                <button class="option-btn" onclick="handleQuizAnswer(1, false)">[Change to Wrong Choice A]</button>
+                <button class="option-btn" onclick="handleQuizAnswer(1, false)">[Change to Wrong Choice B]</button>
             </div>
 
-            <div id="q2" class="question-container">
-                <p class="question-text">2. What is my absolute favorite food or snack that you always get me?</p>
-                <div class="options-list">
-                    <button class="option-btn" onclick="answerQuiz(2, false)">[Wrong Answer]</button>
-                    <button class="option-btn" onclick="answerQuiz(2, true)">[Right Answer]</button>
-                    <button class="option-btn" onclick="answerQuiz(2, false)">[Wrong Answer]</button>
-                </div>
+            <div id="quiz-q2" class="question-container">
+                <p class="question-text">2. What is my favorite snack that you always get me?</p>
+                <button class="option-btn" onclick="handleQuizAnswer(2, false)">[Wrong Answer]</button>
+                <button class="option-btn" onclick="handleQuizAnswer(2, true)">[Right Answer]</button>
+                <button class="option-btn" onclick="handleQuizAnswer(2, false)">[Wrong Answer]</button>
             </div>
 
-            <div id="q3" class="question-container">
+            <div id="quiz-q3" class="question-container">
                 <p class="question-text">3. Who said "I love you" first?</p>
-                <div class="options-list">
-                    <button class="option-btn" onclick="answerQuiz(3, true)">Me obviously!</button>
-                    <button class="option-btn" onclick="answerQuiz(3, false)">You did!</button>
-                </div>
+                <button class="option-btn" onclick="handleQuizAnswer(3, true)">Me obviously!</button>
+                <button class="option-btn" onclick="handleQuizAnswer(3, false)">You did!</button>
             </div>
 
-            <div id="q4" class="question-container">
-                <p class="question-text">4. What is our absolute favorite hobby or thing to do together?</p>
-                <div class="options-list">
-                    <button class="option-btn" onclick="answerQuiz(4, false)">[Wrong Answer]</button>
-                    <button class="option-btn" onclick="answerQuiz(4, false)">[Wrong Answer]</button>
-                    <button class="option-btn" onclick="answerQuiz(4, true)">[Right Answer]</button>
-                </div>
+            <div id="quiz-q4" class="question-container">
+                <p class="question-text">4. What is our absolute favorite thing to do together?</p>
+                <button class="option-btn" onclick="handleQuizAnswer(4, false)">[Wrong Answer]</button>
+                <button class="option-btn" onclick="handleQuizAnswer(4, true)">[Right Answer]</button>
             </div>
 
-            <div id="q5" class="question-container">
-                <p class="question-text">5. How many days/months have we officially been together today?</p>
-                <div class="options-list">
-                    <button class="option-btn" onclick="answerQuiz(5, false)">[Wrong Option]</button>
-                    <button class="option-btn" onclick="answerQuiz(5, true)">[Right Option]</button>
-                    <button class="option-btn" onclick="answerQuiz(5, false)">[Wrong Option]</button>
-                </div>
+            <div id="quiz-q5" class="question-container">
+                <p class="question-text">5. How long have we officially been together today?</p>
+                <button class="option-btn" onclick="handleQuizAnswer(5, true)">[Right Answer]</button>
+                <button class="option-btn" onclick="handleQuizAnswer(5, false)">[Wrong Answer]</button>
             </div>
 
             <div id="quiz-result-box">
-                <h3 style="color: #ff8fa3; margin-bottom: 15px; font-size: 1.4rem;">Quiz Complete! 🎉</h3>
-                <p style="color: #555; margin-bottom: 20px;">You did amazing babe! Ready for your final note?</p>
-                <button class="btn" onclick="goToFinal()">Next ➡️</button>
+                <h3 style="color: #ff8fa3; margin-bottom: 10px; font-size: 1.3rem;">Quiz Completed! 🎉</h3>
+                <p style="color: #666; margin-bottom: 15px;">You passed perfectly! Ready for your last letter?</p>
+                <button class="btn" onclick="changeScreen(4, 5)">Next ➡️</button>
             </div>
         </div>
     </div>
@@ -382,97 +428,90 @@
             <h2>To More Memories ✨</h2>
             <p>Happy Anniversary again, my love! 
 
-            Thank you for playing along and checking out my little website surprise. I hope it made you smile as much as you make me smile every day. 
+            Thank you for checking out my little website surprise. I hope it made you smile as much as you make me smile every day. 
 
             I love you endlessly, Arriv! Always and forever. 💗</p>
         </div>
     </div>
 
     <script>
-        // --- PASSWORD SYSTEM ---
-        function checkPassword() {
-            const input = document.getElementById('password-input').value;
-            const lockBox = document.getElementById('lock-box');
-            const errorMsg = document.getElementById('error-msg');
+        // CORE NAVIGATION SYSTEM
+        function changeScreen(oldNum, newNum) {
+            document.getElementById(`screen-${oldNum}`).classList.remove('active');
+            document.getElementById(`screen-${newNum}`).classList.add('active');
+        }
 
-            if (input === '0524') {
-                document.getElementById('screen-1').classList.remove('active');
-                document.getElementById('screen-2').classList.add('active');
-                setInterval(createHeart, 400);
+        // PASSWORD VERIFICATION
+        function checkPassword() {
+            const val = document.getElementById('password-input').value;
+            const targetBox = document.getElementById('lock-box');
+            const alertMsg = document.getElementById('error-msg');
+
+            if (val === '0524') {
+                changeScreen(1, 2);
+                setInterval(spawnHeart, 450); // Start floating hearts instantly
             } else {
-                lockBox.classList.add('shake');
-                errorMsg.style.visibility = 'visible';
+                targetBox.classList.add('shake');
+                alertMsg.style.display = 'block';
                 document.getElementById('password-input').value = '';
-                setTimeout(() => { lockBox.classList.remove('shake'); }, 400);
+                setTimeout(() => { targetBox.classList.remove('shake'); }, 400);
             }
         }
 
+        // KEYBOARD ENTER LISTENER
         document.getElementById('password-input').addEventListener('keypress', function(e) {
             if (e.key === 'Enter') { checkPassword(); }
         });
 
+        // BEGIN MUSIC AND LOAD MAIN SCREEN
         function enterStory() {
-            document.getElementById('screen-2').classList.remove('active');
-            document.getElementById('screen-3').classList.add('active');
-            document.getElementById('bg-music').play().catch(e => console.log("Audio waiting..."));
+            changeScreen(2, 3);
+            const player = document.getElementById('bg-music');
+            player.play().catch(err => console.log("Audio waiting for explicit unlock flag..."));
         }
 
-        // --- ACCORDION TOGGLE (OPEN/CLOSE CARDS) ---
-        function toggleSection(contentId, btnId) {
-            const content = document.getElementById(contentId);
-            const button = document.getElementById(btnId);
-            content.classList.toggle('open');
-            
-            if(content.classList.contains('open')) {
-                button.innerText = 'Close section ↑';
+        // ACCORDION TOGGLE
+        function toggleSection(elementId, btnControl) {
+            const drawer = document.getElementById(elementId);
+            drawer.classList.toggle('open');
+            if (drawer.classList.contains('open')) {
+                btnControl.innerText = 'Close section ↑';
             } else {
-                button.innerText = 'Click to read →';
+                btnControl.innerText = 'Click to read →';
             }
         }
 
-        // --- NAVIGATION ---
-        function goToQuiz() {
-            document.getElementById('screen-3').classList.remove('active');
-            document.getElementById('screen-4').classList.add('active');
-        }
-
-        function goToFinal() {
-            document.getElementById('screen-4').classList.remove('active');
-            document.getElementById('screen-5').classList.add('active');
-        }
-
-        // --- INTERACTIVE QUIZ LOGIC ---
-        let currentQuestion = 1;
-        function answerQuiz(questionNum, isCorrect) {
-            if (isCorrect) {
-                alert("Correct! Look at you remembering stuff 🥰");
+        // QUIZ LOGIC
+        let activeQ = 1;
+        function handleQuizAnswer(qNum, isCorrectAnswer) {
+            if (isCorrectAnswer) {
+                alert("Correct answer! Smart boy 🥰");
             } else {
-                alert("Wrong answer dummy!! Guess again 😂 Close this prompt and click another answer!");
-                return; // Stops them from advancing until they get it right!
+                alert("Wrong answer dummy!! Guess again 😂 Try a different choice.");
+                return;
             }
 
-            // Move to next question
-            document.getElementById(`q${questionNum}`).classList.remove('active');
-            currentQuestion++;
+            document.getElementById(`quiz-q${qNum}`).classList.remove('active');
+            activeQ++;
 
-            if (currentQuestion <= 5) {
-                document.getElementById(`q${currentQuestion}`).classList.add('active');
+            if (activeQ <= 5) {
+                document.getElementById(`quiz-q${activeQ}`).classList.add('active');
             } else {
                 document.getElementById('quiz-result-box').style.display = 'block';
             }
         }
 
-        // --- FLOATING HEARTS GENERATOR ---
-        function createHeart() {
-            const heart = document.createElement('div');
-            heart.classList.add('heart');
-            heart.innerHTML = '💗';
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
-            heart.style.fontSize = (Math.random() * 1 + 1) + 'rem';
-            document.body.appendChild(heart);
-            setTimeout(() => { heart.remove(); }, 6000);
+        // BACKGROUND HEARTS ENGINE
+        function spawnHeart() {
+            const h = document.createElement('div');
+            h.classList.add('heart');
+            h.innerHTML = '💗';
+            h.style.left = Math.random() * 100 + 'vw';
+            h.style.animationDuration = (Math.random() * 3 + 4) + 's';
+            h.style.fontSize = (Math.random() * 1 + 0.8) + 'rem';
+            document.body.appendChild(h);
+            setTimeout(() => { h.remove(); }, 6000);
         }
-    </style>
+    </script>
 </body>
 </html>
