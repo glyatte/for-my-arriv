@@ -13,10 +13,17 @@
         }
 
         body {
-            background-image: url('https://i.pinimg.com/736x/1e/ae/49/1eae490d5ef25f8917bda4f850769d28.jpg');
-            background-size: auto;
-            background-repeat: repeat;
+            background-image: url('https://i.pinimg.com/736x/1e/ae/49/1eae490d5ef25f8917bda4f850769d28.jpg'); /* Your custom background link */
+            background-size: cover;
+            background-repeat: no-repeat;
             background-attachment: fixed;
+            background-position: center;
+            color: #4a4a4a;
+            display: block; /* 👈 THIS IS THE MAGIC FIX! It prevents the layout from shrinking sideways! */
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            padding: 40px 15px;
         }
 
         #bg-music {
