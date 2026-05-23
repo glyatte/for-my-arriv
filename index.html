@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Arriv 💗</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f0f7f4; /* Cute mint green */
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* --- BACKGROUND MUSIC ELEMENT (HIDDEN) --- */
+        #bg-music {
+            display: none;
+        }
+
+        /* --- FLOATING HEARTS EFFECT --- */
+        .heart {
+            position: fixed;
+            color: #ffb3c1;
+            font-size: 1.5rem;
+            animation: floatUp 6s linear infinite;
+            z-index: 999;
+            pointer-events: none;
+            opacity: 0;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* --- SCREEN VISIBILITY TOGGLES --- */
+        .screen {
+            display: none;
+            width: 100%;
+            max-width: 600px;
+            padding: 30px 20px;
+            text-align: center;
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        /* Show the active screen */
+        .screen.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* BUTTON STYLE */
+        .btn {
+            background-color: #7fac96;
+            color: white;
+            border: none;
+            padding: 14px 30px;
+            border-radius: 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(127, 172, 150, 0.2);
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        .btn:hover {
+            background-color: #699680;
+            transform: translateY(-2px);
+        }
+
+        /* --- SCREEN 1: PASSWORD --- */
+        .lock-box {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            display: inline-block;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .lock-box h2 { color: #57806b; margin-bottom: 20px; }
+
+        .password-input-container {
+            position: relative;
+            margin-bottom: 10px;
+        }
+
+        #password-input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 15px;
+            text-align: center;
+            font-size: 1.3rem;
+            letter-spacing: 6px;
+            outline: none;
+        }
+
+        #password-input:focus { border-color: #7fac96; }
+
+        #error-msg {
+            color: #de7a7a;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            font-weight: 500;
+            visibility: hidden;
+        }
+
+        /* Shake Animation for incorrect password */
+        .shake {
+            animation: shakeAnim 0.4s ease;
+        }
+
+        @keyframes shakeAnim {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-10px); }
+            40%, 80% { transform: translateX(10px); }
+        }
+
+        /* --- SCREEN 2: REVEAL PAGE --- */
+        .reveal-title {
+            font-size: 3rem;
+            color: #de7a7a;
+            margin-bottom: 20px;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* --- SCREEN 3: MAIN STORY PAGE --- */
+        .story-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .story-header h1 {
+            color: #57806b;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .story-header p {
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        /* Cute Sections */
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.02);
+            text-align: left;
+            border-left: 5px solid #7fac96;
+        }
+
+        .card h3 {
+            color: #57806b;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card p {
+            color: #555;
+            line-height: 1.7;
+            font-size: 1.05rem;
+            white-space: pre-line;
+        }
+
+        /* Placeholder for your actual pictures */
+        .photo-placeholder {
+            width: 100%;
+            height: 250px;
+            background-color: #f7f9f8;
+            border: 2px dashed #ccd9d2;
+            border-radius: 15px;
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #888;
+            font-size: 0.9rem;
+            overflow: hidden;
+        }
+
+        .photo-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="bg-music" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="screen-1" class="screen active">
+        <div class="lock-box" id="lock-box">
+            <div style="font-size: 3.5rem; margin-bottom: 15px;">🔒</div>
+            <h2>Strictly Confidential</h2>
+            <div class="password-input-container">
+                <input type="password" id="password-input" placeholder="••••" maxlength="4">
+            </div>
+            <button class="btn" onclick="checkPassword()">Enter</button>
+            <div id="error-msg">Wrong password! Try again... 😉</div>
+        </div>
+    </div>
+
+    <div id="screen-2" class="screen">
+        <h1 class="reveal-title">Hi Arriv 💗</h1>
+        <p style="font-size: 1.2rem; color: #555; margin-bottom: 30px;">I made a little digital universe just for us.</p>
+        <button class="btn" style="max-width: 300px;" onclick="enterStory()">Enter Our Story</button>
+    </div>
+
+    <div id="screen-3" class="screen story-container">
+        <header class="story-header">
+            <h1>Happy Anniversary! ❤️</h1>
+            <p>Here is to all the days behind us and all the ones ahead.</p>
+        </header>
+
+        <div class="card">
+            <h3>🌱 How we started</h3>
+            <p>Type out the story of how you guys first met or started talking here! It's crazy thinking back to day one compared to where we are right now...</p>
+            
+            <div class="photo-placeholder">
+                <span>[ Optional: Drop a photo from when you started here! ]</span>
+                </div>
+        </div>
+
+        <div class="card">
+            <h3>✨ My favorite memories</h3>
+            <p>1. Our late night conversations that go on for hours.
+            2. Every single spontaneous food date.
+            3. The way you make me smile when I have a bad day.</p>
+        </div>
+
+        <div class="card">
+            <h3>💌 Why I love you</h3>
+            <p>I love you because you are my safe haven, my loudest cheerleader, and my absolute favorite person to do life with. Thank you for being uniquely you.</p>
+        </div>
+    </div>
+
+    <script>
+        // Check Password with Shaking Effect
+        function checkPassword() {
+            const input = document.getElementById('password-input').value;
+            const lockBox = document.getElementById('lock-box');
+            const errorMsg = document.getElementById('error-msg');
+
+            if (input === '0524') {
+                // Advance to Reveal Screen
+                document.getElementById('screen-1').classList.remove('active');
+                document.getElementById('screen-2').classList.add('active');
+                
+                // Start creating gentle floating hearts immediately
+                setInterval(createHeart, 400);
+            } else {
+                // Trigger Shaking Effect and Show "Try Again"
+                lockBox.classList.add('shake');
+                errorMsg.style.visibility = 'visible';
+                document.getElementById('password-input').value = '';
+
+                // Remove shake class after animation completes so it can shake again
+                setTimeout(() => {
+                    lockBox.classList.remove('shake');
+                }, 400);
+            }
+        }
+
+        // Allow pressing "Enter" on keyboard
+        document.getElementById('password-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') { checkPassword(); }
+        });
+
+        // Enter Main Page & Start Music
+        function enterStory() {
+            document.getElementById('screen-2').classList.remove('active');
+            document.getElementById('screen-3').classList.add('active');
+
+            // Play background music
+            const music = document.getElementById('bg-music');
+            music.play().catch(error => {
+                console.log("Audio play blocked or failed:", error);
+            });
+        }
+
+        // JavaScript Floating Hearts Generator
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '💗'; // You can change this emoji to ❤️ or 💕
+            
+            // Random horizontal position across screen
+            heart.style.left = Math.random() * 100 + 'vw';
+            // Random floating duration between 4s and 7s
+            heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+            // Random size variation
+            heart.style.fontSize = (Math.random() * 1 + 1) + 'rem';
+            
+            document.body.appendChild(heart);
+
+            // Clean up old hearts from code so it doesn't lag
+            setTimeout(() => {
+                heart.remove();
+            }, 6000);
+        }
+    </script>
+</body>
+</html>
